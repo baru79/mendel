@@ -27,8 +27,6 @@ const useDataApi = (initialUrl, initialData) => {
     };
     fetchData();
   }, [url]);
-  console.log('url:', url);
-  console.log('data:', data);
   return [{ data, isLoading, isError }, setUrl];
 };
 
