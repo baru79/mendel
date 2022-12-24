@@ -9,6 +9,7 @@ import ReactPaginate from 'react-paginate';
 function App() {
   const [page, setPage] = useState(1);
   const [searchValue, setSearchValue] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
 
   const urlSearch = `${BASE_URL_OPEN_LIBRARY}/search.json?q=${encodedBookName(
     searchValue
@@ -19,6 +20,7 @@ function App() {
   const handleChange = (event) => {
     const { value } = event.target;
     setSearchValue(value);
+    setIsSearching(false);
   };
 
   const handleKeyDown = (event) => {
@@ -28,6 +30,7 @@ function App() {
           searchValue
         )}&page=${page}`;
         setUrl(urlSearch);
+        setIsSearching(true);
       }
     }
   };
@@ -39,6 +42,7 @@ function App() {
         searchValue
       )}&page=${page}`;
       setUrl(urlSearch);
+      setIsSearching(true);
     }
   };
 
@@ -49,6 +53,7 @@ function App() {
     )}&page=${pageSelected}`;
     setUrl(urlSearch);
     setPage(pageSelected);
+    setIsSearching(true);
   };
 
   const RenderData = () => {
@@ -63,7 +68,7 @@ function App() {
     if (isError) {
       return <Message message={'An error occurs during the searching.'} color={'red'} />;
     }
-    if ((searchValue && data && data?.docs?.length === 0) || !data) {
+    if ((isSearching && searchValue && data && data?.docs?.length === 0) || !data) {
       return <Message message={'No data found!'} color={'red'} />;
     } else if (searchValue && data && data?.docs?.length > 0) {
       return <BookList books={data.docs} />;
