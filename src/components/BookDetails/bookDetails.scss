@@ -1,0 +1,30 @@
+.styled-book-details-header {
+  text-align: center;
+}
+
+.styled-book-details-container {
+  display: flex;
+  margin: 10px;
+}
+
+.styled-book-details-left-container,
+.styled-book-details-right-container {
+  padding: 10px;
+  text-align: justify;
+}
+
+.styled-book-details-right-container p span {
+  font-weight: bold;
+}
+
+.styled-book-details-back-button {
+  display: flex;
+  margin: auto;
+  top: 50%;
+  background-color: #0a0a23;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 22px;
+}
