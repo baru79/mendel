@@ -62,10 +62,10 @@ function App() {
         <Message message={'Search value should be greater than 3 characters!'} color={'red'} />
       );
     }
-    if (isLoading) {
+    if (isSearching && isLoading) {
       return <Message message={'Loading...'} />;
     }
-    if (isError) {
+    if (isSearching && isError) {
       return <Message message={'An error occurs during the searching.'} color={'red'} />;
     }
     if ((isSearching && searchValue && data && data?.docs?.length === 0) || !data) {
